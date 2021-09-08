@@ -1,0 +1,54 @@
+Type=Exe
+Reference=*\G{00020430-0000-0000-C000-000000000046}#2.0#0#C:\Windows\SysWOW64\stdole2.tlb#OLE Automation
+Module=MNew; Modules\MNew.bas
+Module=MMain; Modules\MMain.bas
+Module=MArray; Modules\MArray.bas
+Module=MShift; Modules\MShift.bas
+Module=MCompare; Modules\MCompare.bas
+Class=Matrix; Classes\MaPack\Matrix.cls
+Class=EigenvalueDecomposition; Classes\MaPack\EigenvalueDecomposition.cls
+Class=CholeskyDecomposition; Classes\MaPack\CholeskyDecomposition.cls
+Class=LuDecomposition; Classes\MaPack\LuDecomposition.cls
+Class=QrDecomposition; Classes\MaPack\QrDecomposition.cls
+Class=SingularValueDecomposition; Classes\MaPack\SingularValueDecomposition.cls
+Class=GaussElimination; Classes\MaPack\GaussElimination.cls
+Class=Random; Classes\Random.cls
+Class=Math; Classes\Math.cls
+Class=Console; Classes\Console.cls
+Class=AArray; Classes\AArray.cls
+Class=IComparable; Classes\IComparable.cls
+ResFile32="Resources\MyRes.res"
+Startup="Sub Main"
+HelpFile=""
+ExeName32="LRMaPack.exe"
+Command32=""
+Name="MaPackExmp"
+HelpContextID="0"
+CompatibleMode="0"
+MajorVer=1
+MinorVer=0
+RevisionVer=0
+AutoIncrementVer=0
+ServerSupportFiles=0
+VersionCompanyName="MBO-Ing.com"
+CompilationType=0
+OptimizationType=0
+FavorPentiumPro(tm)=0
+CodeViewDebugInfo=0
+NoAliasing=0
+BoundsCheck=0
+OverflowCheck=0
+FlPointCheck=0
+FDIVCheck=0
+UnroundedFP=0
+StartMode=0
+Unattended=0
+Retained=0
+ThreadPerObject=0
+MaxNumberOfThreads=1
+
+[MS Transaction Server]
+AutoRefresh=1
+
+[RVB]
+DeleteClass1=Form1

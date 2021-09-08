@@ -1,0 +1,4 @@
+@echo off
+%SystemRoot%\Microsoft.net\Framework\v1.0.3705\csc.exe /target:library /out:..\Build\Mapack.dll /doc:..\Build\Mapack.xml *.cs %1
+copy ReadMe.htm ..\Build
+

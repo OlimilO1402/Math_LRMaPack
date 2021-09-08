@@ -1,0 +1,315 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Mapack</name>
+    </assembly>
+    <members>
+        <member name="T:Mapack.CholeskyDecomposition">
+            <summary>
+            	Cholesky Decomposition of a symmetric, positive definite matrix.
+            </summary>
+            <remarks>
+            	For a symmetric, positive definite matrix <c>A</c>, the Cholesky decomposition is a
+            	lower triangular matrix <c>L</c> so that <c>A = L * L'</c>.
+            	If the matrix is not symmetric or positive definite, the constructor returns a partial 
+            	decomposition and sets two internal variables that can be queried using the
+            	<see cref="P:Mapack.CholeskyDecomposition.Symmetric"/> and <see cref="P:Mapack.CholeskyDecomposition.PositiveDefinite"/> properties.
+            </remarks>
+        </member>
+        <member name="M:Mapack.CholeskyDecomposition.#ctor(Mapack.Matrix)">
+            <summary>Construct a Cholesky Decomposition.</summary>
+        </member>
+        <member name="M:Mapack.CholeskyDecomposition.Solve(Mapack.Matrix)">
+            <summary>Solves a set of equation systems of type <c>A * X = B</c>.</summary>
+            <param name="value">Right hand side matrix with as many rows as <c>A</c> and any number of columns.</param>
+            <returns>Matrix <c>X</c> so that <c>L * L' * X = B</c>.</returns>
+            <exception cref="T:System.ArgumentException">Matrix dimensions do not match.</exception>
+            <exception cref="T:System.InvalidOperationException">Matrix is not symmetrix and positive definite.</exception>
+        </member>
+        <member name="P:Mapack.CholeskyDecomposition.Symmetric">
+            <summary>Returns <see langword="true"/> if the matrix is symmetric.</summary>
+        </member>
+        <member name="P:Mapack.CholeskyDecomposition.PositiveDefinite">
+            <summary>Returns <see langword="true"/> if the matrix is positive definite.</summary>
+        </member>
+        <member name="P:Mapack.CholeskyDecomposition.LeftTriangularFactor">
+            <summary>Returns the left triangular factor <c>L</c> so that <c>A = L * L'</c>.</summary>
+        </member>
+        <member name="T:Mapack.EigenvalueDecomposition">
+            <summary>
+            Determines the eigenvalues and eigenvectors of a real square matrix.
+            </summary>
+            <remarks>
+            If <c>A</c> is symmetric, then <c>A = V * D * V'</c> and <c>A = V * V'</c>
+            where the eigenvalue matrix <c>D</c> is diagonal and the eigenvector matrix <c>V</c> is orthogonal.
+            If <c>A</c> is not symmetric, the eigenvalue matrix <c>D</c> is block diagonal
+            with the real eigenvalues in 1-by-1 blocks and any complex eigenvalues,
+            <c>lambda+i*mu</c>, in 2-by-2 blocks, <c>[lambda, mu; -mu, lambda]</c>.
+            The columns of <c>V</c> represent the eigenvectors in the sense that <c>A * V = V * D</c>.
+            The matrix V may be badly conditioned, or even singular, so the validity of the equation
+            <c>A=V*D*inverse(V)</c> depends upon the condition of <c>V</c>.
+            </remarks>
+        </member>
+        <member name="M:Mapack.EigenvalueDecomposition.#ctor(Mapack.Matrix)">
+            <summary>Construct an eigenvalue decomposition.</summary>
+        </member>
+        <member name="P:Mapack.EigenvalueDecomposition.RealEigenvalues">
+            <summary>Returns the real parts of the eigenvalues.</summary>
+        </member>
+        <member name="P:Mapack.EigenvalueDecomposition.ImaginaryEigenvalues">
+            <summary>Returns the imaginary parts of the eigenvalues.</summary>	
+        </member>
+        <member name="P:Mapack.EigenvalueDecomposition.EigenvectorMatrix">
+            <summary>Returns the eigenvector matrix.</summary>
+        </member>
+        <member name="P:Mapack.EigenvalueDecomposition.DiagonalMatrix">
+            <summary>Returns the block diagonal eigenvalue matrix.</summary>
+        </member>
+        <member name="T:Mapack.LuDecomposition">
+            <summary>
+              LU decomposition of a rectangular matrix.
+            </summary>
+            <remarks>
+              For an m-by-n matrix <c>A</c> with m &gt;= n, the LU decomposition is an m-by-n
+              unit lower triangular matrix <c>L</c>, an n-by-n upper triangular matrix <c>U</c>,
+              and a permutation vector <c>piv</c> of length m so that <c>A(piv)=L*U</c>.
+              If m &lt; n, then <c>L</c> is m-by-m and <c>U</c> is m-by-n.
+              The LU decompostion with pivoting always exists, even if the matrix is
+              singular, so the constructor will never fail.  The primary use of the
+              LU decomposition is in the solution of square systems of simultaneous
+              linear equations. This will fail if <see cref="P:Mapack.LuDecomposition.NonSingular"/> returns <see langword="false"/>.
+            </remarks>
+        </member>
+        <member name="M:Mapack.LuDecomposition.#ctor(Mapack.Matrix)">
+            <summary>Construct a LU decomposition.</summary>	
+        </member>
+        <member name="M:Mapack.LuDecomposition.Solve(Mapack.Matrix)">
+            <summary>Solves a set of equation systems of type <c>A * X = B</c>.</summary>
+            <param name="value">Right hand side matrix with as many rows as <c>A</c> and any number of columns.</param>
+            <returns>Matrix <c>X</c> so that <c>L * U * X = B</c>.</returns>
+        </member>
+        <member name="P:Mapack.LuDecomposition.NonSingular">
+            <summary>Returns if the matrix is non-singular.</summary>
+        </member>
+        <member name="P:Mapack.LuDecomposition.Determinant">
+            <summary>Returns the determinant of the matrix.</summary>
+        </member>
+        <member name="P:Mapack.LuDecomposition.LowerTriangularFactor">
+            <summary>Returns the lower triangular factor <c>L</c> with <c>A=LU</c>.</summary>
+        </member>
+        <member name="P:Mapack.LuDecomposition.UpperTriangularFactor">
+            <summary>Returns the lower triangular factor <c>L</c> with <c>A=LU</c>.</summary>
+        </member>
+        <member name="P:Mapack.LuDecomposition.PivotPermutationVector">
+            <summary>Returns the pivot permuation vector.</summary>
+        </member>
+        <member name="T:Mapack.Matrix">
+            <summary>Matrix provides the fundamental operations of numerical linear algebra.</summary>
+        </member>
+        <member name="M:Mapack.Matrix.#ctor(System.Int32,System.Int32)">
+            <summary>Constructs an empty matrix of the given size.</summary>
+            <param name="rows">Number of rows.</param>
+            <param name="columns">Number of columns.</param>
+        </member>
+        <member name="M:Mapack.Matrix.#ctor(System.Int32,System.Int32,System.Double)">
+            <summary>Constructs a matrix of the given size and assigns a given value to all diagonal elements.</summary>
+            <param name="rows">Number of rows.</param>
+            <param name="columns">Number of columns.</param>
+            <param name="value">Value to assign to the diagnoal elements.</param>
+        </member>
+        <member name="M:Mapack.Matrix.#ctor(System.Double[][])">
+            <summary>Constructs a matrix from the given array.</summary>
+            <param name="value">The array the matrix gets constructed from.</param>
+        </member>
+        <member name="M:Mapack.Matrix.Equals(System.Object)">
+            <summary>Determines weather two instances are equal.</summary>
+        </member>
+        <member name="M:Mapack.Matrix.Equals(Mapack.Matrix,Mapack.Matrix)">
+            <summary>Determines weather two instances are equal.</summary>
+        </member>
+        <member name="M:Mapack.Matrix.GetHashCode">
+            <summary>Serves as a hash function for a particular type, suitable for use in hashing algorithms and data structures like a hash table.</summary>
+        </member>
+        <member name="M:Mapack.Matrix.Submatrix(System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>Returns a sub matrix extracted from the current matrix.</summary>
+            <param name="startRow">Start row index</param>
+            <param name="endRow">End row index</param>
+            <param name="startColumn">Start column index</param>
+            <param name="endColumn">End column index</param>
+        </member>
+        <member name="M:Mapack.Matrix.Submatrix(System.Int32[],System.Int32[])">
+            <summary>Returns a sub matrix extracted from the current matrix.</summary>
+            <param name="rowIndexes">Array of row indices</param>
+            <param name="columnIndexes">Array of column indices</param>
+        </member>
+        <member name="M:Mapack.Matrix.Submatrix(System.Int32,System.Int32,System.Int32[])">
+            <summary>Returns a sub matrix extracted from the current matrix.</summary>
+            <param name="i0">Starttial row index</param>
+            <param name="i1">End row index</param>
+            <param name="c">Array of row indices</param>
+        </member>
+        <member name="M:Mapack.Matrix.Submatrix(System.Int32[],System.Int32,System.Int32)">
+            <summary>Returns a sub matrix extracted from the current matrix.</summary>
+            <param name="r">Array of row indices</param>
+            <param name="j0">Start column index</param>
+            <param name="j1">End column index</param>
+        </member>
+        <member name="M:Mapack.Matrix.Clone">
+            <summary>Creates a copy of the matrix.</summary>
+        </member>
+        <member name="M:Mapack.Matrix.Transpose">
+            <summary>Returns the transposed matrix.</summary>
+        </member>
+        <member name="M:Mapack.Matrix.Negate(Mapack.Matrix)">
+            <summary>Unary minus.</summary>
+        </member>
+        <member name="M:Mapack.Matrix.op_UnaryNegation(Mapack.Matrix)">
+            <summary>Unary minus.</summary>
+        </member>
+        <member name="M:Mapack.Matrix.op_Equality(Mapack.Matrix,Mapack.Matrix)">
+            <summary>Matrix equality.</summary>
+        </member>
+        <member name="M:Mapack.Matrix.op_Inequality(Mapack.Matrix,Mapack.Matrix)">
+            <summary>Matrix inequality.</summary>
+        </member>
+        <member name="M:Mapack.Matrix.Add(Mapack.Matrix,Mapack.Matrix)">
+            <summary>Matrix addition.</summary>
+        </member>
+        <member name="M:Mapack.Matrix.op_Addition(Mapack.Matrix,Mapack.Matrix)">
+            <summary>Matrix addition.</summary>
+        </member>
+        <member name="M:Mapack.Matrix.Subtract(Mapack.Matrix,Mapack.Matrix)">
+            <summary>Matrix subtraction.</summary>
+        </member>
+        <member name="M:Mapack.Matrix.op_Subtraction(Mapack.Matrix,Mapack.Matrix)">
+            <summary>Matrix subtraction.</summary>
+        </member>
+        <member name="M:Mapack.Matrix.Multiply(Mapack.Matrix,System.Double)">
+            <summary>Matrix-scalar multiplication.</summary>
+        </member>
+        <member name="M:Mapack.Matrix.op_Multiply(Mapack.Matrix,System.Double)">
+            <summary>Matrix-scalar multiplication.</summary>
+        </member>
+        <member name="M:Mapack.Matrix.Multiply(Mapack.Matrix,Mapack.Matrix)">
+            <summary>Matrix-matrix multiplication.</summary>
+        </member>
+        <member name="M:Mapack.Matrix.op_Multiply(Mapack.Matrix,Mapack.Matrix)">
+            <summary>Matrix-matrix multiplication.</summary>
+        </member>
+        <member name="M:Mapack.Matrix.Solve(Mapack.Matrix)">
+            <summary>Returns the LHS solution vetor if the matrix is square or the least squares solution otherwise.</summary>
+        </member>
+        <member name="M:Mapack.Matrix.Random(System.Int32,System.Int32)">
+            <summary>Returns a matrix filled with random values.</summary>
+        </member>
+        <member name="M:Mapack.Matrix.Diagonal(System.Int32,System.Int32,System.Double)">
+            <summary>Returns a diagonal matrix of the given size.</summary>
+        </member>
+        <member name="M:Mapack.Matrix.ToString">
+            <summary>Returns the matrix in a textual form.</summary>
+        </member>
+        <member name="P:Mapack.Matrix.Rows">
+            <summary>Returns the number of columns.</summary>
+        </member>
+        <member name="P:Mapack.Matrix.Columns">
+            <summary>Returns the number of columns.</summary>
+        </member>
+        <member name="P:Mapack.Matrix.Square">
+            <summary>Return <see langword="true"/> if the matrix is a square matrix.</summary>
+        </member>
+        <member name="P:Mapack.Matrix.Symmetric">
+            <summary>Returns <see langword="true"/> if the matrix is symmetric.</summary>
+        </member>
+        <member name="P:Mapack.Matrix.Item(System.Int32,System.Int32)">
+            <summary>Access the value at the given location.</summary>
+        </member>
+        <member name="P:Mapack.Matrix.Norm1">
+            <summary>Returns the One Norm for the matrix.</summary>
+            <value>The maximum column sum.</value>
+        </member>
+        <member name="P:Mapack.Matrix.InfinityNorm">
+            <summary>Returns the Infinity Norm for the matrix.</summary>
+            <value>The maximum row sum.</value>
+        </member>
+        <member name="P:Mapack.Matrix.FrobeniusNorm">
+            <summary>Returns the Frobenius Norm for the matrix.</summary>
+            <value>The square root of sum of squares of all elements.</value>
+        </member>
+        <member name="P:Mapack.Matrix.Inverse">
+            <summary>Inverse of the matrix if matrix is square, pseudoinverse otherwise.</summary>
+        </member>
+        <member name="P:Mapack.Matrix.Determinant">
+            <summary>Determinant if matrix is square.</summary>
+        </member>
+        <member name="P:Mapack.Matrix.Trace">
+            <summary>Returns the trace of the matrix.</summary>
+            <returns>Sum of the diagonal elements.</returns>
+        </member>
+        <member name="T:Mapack.QrDecomposition">
+            <summary>
+              QR decomposition for a rectangular matrix.
+            </summary>
+            <remarks>
+              For an m-by-n matrix <c>A</c> with <c>m &gt;= n</c>, the QR decomposition is an m-by-n
+              orthogonal matrix <c>Q</c> and an n-by-n upper triangular 
+              matrix <c>R</c> so that <c>A = Q * R</c>.
+              The QR decompostion always exists, even if the matrix does not have
+              full rank, so the constructor will never fail.  The primary use of the
+              QR decomposition is in the least squares solution of nonsquare systems
+              of simultaneous linear equations.
+              This will fail if <see cref="P:Mapack.QrDecomposition.FullRank"/> returns <see langword="false"/>.
+            </remarks>
+        </member>
+        <member name="M:Mapack.QrDecomposition.#ctor(Mapack.Matrix)">
+            <summary>Construct a QR decomposition.</summary>	
+        </member>
+        <member name="M:Mapack.QrDecomposition.Solve(Mapack.Matrix)">
+            <summary>Least squares solution of <c>A * X = B</c></summary>
+            <param name="value">Right-hand-side matrix with as many rows as <c>A</c> and any number of columns.</param>
+            <returns>A matrix that minimized the two norm of <c>Q * R * X - B</c>.</returns>
+            <exception cref="T:System.ArgumentException">Matrix row dimensions must be the same.</exception>
+            <exception cref="T:System.InvalidOperationException">Matrix is rank deficient.</exception>
+        </member>
+        <member name="P:Mapack.QrDecomposition.FullRank">
+            <summary>Shows if the matrix <c>A</c> is of full rank.</summary>
+            <value>The value is <see langword="true"/> if <c>R</c>, and hence <c>A</c>, has full rank.</value>
+        </member>
+        <member name="P:Mapack.QrDecomposition.UpperTriangularFactor">
+            <summary>Returns the upper triangular factor <c>R</c>.</summary>
+        </member>
+        <member name="P:Mapack.QrDecomposition.OrthogonalFactor">
+            <summary>Returns the orthogonal factor <c>Q</c>.</summary>
+        </member>
+        <member name="T:Mapack.SingularValueDecomposition">
+            <summary>
+            	Singular Value Decomposition for a rectangular matrix.
+            </summary>
+            <remarks>
+              For an m-by-n matrix <c>A</c> with <c>m >= n</c>, the singular value decomposition is
+              an m-by-n orthogonal matrix <c>U</c>, an n-by-n diagonal matrix <c>S</c>, and
+              an n-by-n orthogonal matrix <c>V</c> so that <c>A = U * S * V'</c>.
+              The singular values, <c>sigma[k] = S[k,k]</c>, are ordered so that
+              <c>sigma[0] >= sigma[1] >= ... >= sigma[n-1]</c>.
+              The singular value decompostion always exists, so the constructor will
+              never fail. The matrix condition number and the effective numerical
+              rank can be computed from this decomposition.
+            </remarks>
+        </member>
+        <member name="M:Mapack.SingularValueDecomposition.#ctor(Mapack.Matrix)">
+            <summary>Construct singular value decomposition.</summary>
+        </member>
+        <member name="P:Mapack.SingularValueDecomposition.Condition">
+            <summary>Returns the condition number <c>max(S) / min(S)</c>.</summary>
+        </member>
+        <member name="P:Mapack.SingularValueDecomposition.Norm2">
+            <summary>Returns the Two norm.</summary>
+        </member>
+        <member name="P:Mapack.SingularValueDecomposition.Rank">
+            <summary>Returns the effective numerical matrix rank.</summary>
+            <value>Number of non-negligible singular values.</value>
+        </member>
+        <member name="P:Mapack.SingularValueDecomposition.Diagonal">
+            <summary>Return the one-dimensional array of singular values.</summary>		
+        </member>
+    </members>
+</doc>

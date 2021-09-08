@@ -1,0 +1,2 @@
+@echo off
+%SystemRoot%\Microsoft.net\Framework\v1.0.3705\csc.exe /out:..\Build\Example.exe Example.cs /r:..\Build\Mapack.dll %1
