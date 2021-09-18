@@ -11,4 +11,4 @@ This project is a port of LAPack(Fortran) over MaPack(C#) to VBC. The program is
 In the resources folder you will also find the original C#-code [MaPack](https://github.com/filgood/Mapack) from [Lutz Roeder](https://github.com/lutzroeder), as well as the corresponding VB.net-code.  
 Project started around sept.2006.  
 
-![LRMaPack Image](Resources/LRMaPack.png "LRMaPack Image")
+![LRMaPack Image](Resources/LRMaPack2.png "LRMaPack Image")
