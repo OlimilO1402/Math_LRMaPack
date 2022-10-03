@@ -56,7 +56,7 @@ Dim A() As Double: Call AssignArray(ArrPtr(A()), mA.pArray)
       Next
     Next
   Next
-  Call ZeroSAPtr(ArrPtr(A()))
+  Call MArray.ZeroSAPtr(ArrPtr(A()))
 End Sub
 Private Sub Substitute()
 Dim i As Long, j As Long, k As Long
@@ -71,5 +71,5 @@ Dim A() As Double: Call AssignArray(ArrPtr(A()), mA.pArray)
       mX(j) = (mA(j, mN + 1) - t) / A(j, j)
     End If
   Next
-  Call ZeroSAPtr(ArrPtr(A()))
+  Call MArray.ZeroSAPtr(ArrPtr(A()))
 End Sub

@@ -196,7 +196,7 @@ Public Function Submatrix(ByVal startRow As Long, ByVal endRow As Long, ByVal st
       xx(i - startRow, j - startColumn) = data(i, j)
     Next
   Next
-  Call ZeroSAPtr(ArrPtr(xx()))
+  Call MArray.ZeroSAPtr(ArrPtr(xx()))
   'Return X
   Set Submatrix = X
 End Function
@@ -218,7 +218,7 @@ Public Function SubmatrixI(rowIndexes() As Long, columnIndexes() As Long) As Mat
     Next
   Next
   'Return X
-  Call ZeroSAPtr(ArrPtr(xx()))
+  Call MArray.ZeroSAPtr(ArrPtr(xx()))
   Set SubmatrixI = X
 End Function
 ''' <summary>Returns a sub matrix extracted from the current matrix.</summary>
@@ -244,7 +244,7 @@ Public Function SubmatrixC(ByVal i0 As Long, ByVal i1 As Long, c() As Long) As M
       xx(i - i0, j) = data(i, c(j))
     Next
   Next
-  Call ZeroSAPtr(ArrPtr(xx()))
+  Call MArray.ZeroSAPtr(ArrPtr(xx()))
   'Return X
   Set SubmatrixC = X
 End Function
@@ -269,7 +269,7 @@ Public Function SubmatrixR(r() As Long, ByVal j0 As Long, ByVal j1 As Long) As M
       xx(i, j - j0) = data(r(i), j)
     Next
   Next
-  Call ZeroSAPtr(ArrPtr(xx()))
+  Call MArray.ZeroSAPtr(ArrPtr(xx()))
   'Return X
   Set SubmatrixR = X
 End Function
@@ -284,7 +284,7 @@ Public Function Clone() As Matrix
     Next
   Next
   'Return X
-  Call ZeroSAPtr(ArrPtr(xx()))
+  Call MArray.ZeroSAPtr(ArrPtr(xx()))
   Set Clone = X
 End Function
 ''' <summary>Returns the transposed matrix.</summary>
@@ -299,7 +299,7 @@ Public Function Transpose() As Matrix
     Next
   Next
   'Return X
-  Call ZeroSAPtr(ArrPtr(xx()))
+  Call MArray.ZeroSAPtr(ArrPtr(xx()))
   Set Transpose = X
 End Function
 ''' <summary>Returns the One Norm for the matrix.</summary>
@@ -376,8 +376,8 @@ Public Function Negate(Value As Matrix) As Matrix
       xx(i, j) = -dataV(i, j)
     Next
   Next
-  Call ZeroSAPtr(ArrPtr(xx()))
-  Call ZeroSAPtr(ArrPtr(dataV()))
+  Call MArray.ZeroSAPtr(ArrPtr(xx()))
+  Call MArray.ZeroSAPtr(ArrPtr(dataV()))
   'Return X
   Set Negate = X
 End Function
@@ -432,7 +432,7 @@ Public Function Add(ByVal left As Matrix, ByVal right As Matrix) As Matrix
     Next
   Next
   'Return X
-  Call ZeroSAPtr(ArrPtr(xx()))
+  Call MArray.ZeroSAPtr(ArrPtr(xx()))
   Set Add = X
 End Function
 ''' <summary>Matrix addition.</summary>
@@ -478,8 +478,8 @@ Public Function Subtract(left As Matrix, right As Matrix) As Matrix
     Next
   Next
   'Return X
-  Call ZeroSAPtr(ArrPtr(dataL()))
-  Call ZeroSAPtr(ArrPtr(xx()))
+  Call MArray.ZeroSAPtr(ArrPtr(dataL()))
+  Call MArray.ZeroSAPtr(ArrPtr(xx()))
   Set Subtract = X
 End Function
 ''' <summary>Matrix subtraction.</summary>
@@ -517,8 +517,8 @@ Public Function MultiplyD(left As Matrix, right As Double) As Matrix
     Next
   Next
   'Return X
-  Call ZeroSAPtr(ArrPtr(xx()))
-  Call ZeroSAPtr(ArrPtr(dataL()))
+  Call MArray.ZeroSAPtr(ArrPtr(xx()))
+  Call MArray.ZeroSAPtr(ArrPtr(dataL()))
   Set MultiplyD = X
 End Function
 ''' <summary>Matrix-scalar multiplication.</summary>
@@ -581,9 +581,9 @@ Public Function Multiply(left As Matrix, right As Matrix) As Matrix
   Next
   'Return X
   Call CopyColPtr(ArrPtr(column()), pvDataOld, 1)
-  Call ZeroSAPtr(ArrPtr(dataL()))
-  Call ZeroSAPtr(ArrPtr(dataR()))
-  Call ZeroSAPtr(ArrPtr(xx()))
+  Call MArray.ZeroSAPtr(ArrPtr(dataL()))
+  Call MArray.ZeroSAPtr(ArrPtr(dataR()))
+  Call MArray.ZeroSAPtr(ArrPtr(xx()))
   Set Multiply = X
 End Function
 ''' <summary>Matrix-matrix multiplication.</summary>
@@ -652,7 +652,7 @@ Public Function RandomM(ByVal Rows As Long, ByVal Columns As Long) As Matrix
     Next
   Next
   'Return X
-  Call ZeroSAPtr(ArrPtr(xx()))
+  Call MArray.ZeroSAPtr(ArrPtr(xx()))
   Set RandomM = X
 End Function
 ''' <summary>Returns a diagonal matrix of the given size.</summary>
@@ -672,7 +672,7 @@ Public Function Diagonal(ByVal Rows As Long, ByVal Columns As Long, ByVal Value 
     Next
   Next
   'Return X
-  Call ZeroSAPtr(ArrPtr(xx()))
+  Call MArray.ZeroSAPtr(ArrPtr(xx()))
   Set Diagonal = X
 End Function
 ''' <summary>Returns the matrix in a textual form.</summary>

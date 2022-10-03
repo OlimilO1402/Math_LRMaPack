@@ -37,18 +37,18 @@ Private Type SafeArray2D
   Bounds(0 To 1) As SafeArrayBound
 End Type
 
-Public Declare Function ArrPtr Lib "msvbvm60.dll" Alias "VarPtr" (ByRef Arr() As Any) As Long
+'Public Declare Function ArrPtr Lib "msvbvm60.dll" Alias "VarPtr" (ByRef Arr() As Any) As Long
 '^heiﬂt manchmal auch VarPtrArray aber das ist einfach zu lang
-Public Declare Function SafeArrayCreate Lib "oleaut32.dll" (ByVal vt As Integer, ByVal cDims As Long, ByRef rgsabound As SafeArrayBound) As Long
-Public Declare Function SafeArrayCreateEx Lib "oleaut32.dll" (ByVal vt As Integer, ByVal cDims As Long, ByRef rgsabound As SafeArrayBound, ByRef pvExtra As Any) As Long
-Public Declare Function SafeArrayCreateVector Lib "oleaut32.dll" (ByVal vt As Integer, ByVal lLBound As Long, ByVal cElements As Long) As Long
-Public Declare Function SafeArrayCreateVectorEx Lib "oleaut32.dll" (ByVal vt As Integer, ByVal lLBound As Long, ByVal cElements As Long, ByRef pvExtra As Any) As Long
-Public Declare Function SafeArrayGetDim Lib "oleaut32.dll" (ByRef pSA As SafeArray) As Long
-Public Declare Function SafeArrayGetElemsize Lib "oleaut32.dll" (ByRef pSA As SafeArray) As Long
+Public Declare Function SafeArrayCreate Lib "oleaut32" (ByVal vt As Integer, ByVal cDims As Long, ByRef rgsabound As SafeArrayBound) As Long
+Public Declare Function SafeArrayCreateEx Lib "oleaut32" (ByVal vt As Integer, ByVal cDims As Long, ByRef rgsabound As SafeArrayBound, ByRef pvExtra As Any) As Long
+Public Declare Function SafeArrayCreateVector Lib "oleaut32" (ByVal vt As Integer, ByVal lLBound As Long, ByVal cElements As Long) As Long
+Public Declare Function SafeArrayCreateVectorEx Lib "oleaut32" (ByVal vt As Integer, ByVal lLBound As Long, ByVal cElements As Long, ByRef pvExtra As Any) As Long
+Public Declare Function SafeArrayGetDim Lib "oleaut32" (ByRef pSA As SafeArray) As Long
+Public Declare Function SafeArrayGetElemsize Lib "oleaut32" (ByRef pSA As SafeArray) As Long
 
-Public Declare Sub RtlMoveMemory Lib "kernel32.dll" (pDst As Any, pSrc As Any, ByVal nBytes As Long)
-Public Declare Sub RtlZeroMemory Lib "kernel32.dll" (Destination As Any, ByVal Length As Long)
-Public Declare Sub RtlFillMemory Lib "kernel32.dll" (Destination As Any, ByVal Length As Long, ByVal Fill As Byte)
+Public Declare Sub RtlMoveMemory Lib "kernel32" (pDst As Any, pSrc As Any, ByVal nBytes As Long)
+Public Declare Sub RtlZeroMemory Lib "kernel32" (Destination As Any, ByVal Length As Long)
+Public Declare Sub RtlFillMemory Lib "kernel32" (Destination As Any, ByVal Length As Long, ByVal Fill As Byte)
 
 'Public Shared Function BinarySearch(ByVal array As System.Array, ByVal value As Object) As Integer
 Public Function BinarySearch(pVarPtrArr As Long, ByVal aPtrValue As Long) As Long

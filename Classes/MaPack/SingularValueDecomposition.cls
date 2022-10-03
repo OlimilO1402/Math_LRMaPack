@@ -407,9 +407,9 @@ Friend Sub New_(ByVal Value As Matrix)
         'Exit Select
     End Select
   Wend 'End While
-  Call ZeroSAPtr(ArrPtr(A()))
-  Call ZeroSAPtr(ArrPtr(u()))
-  Call ZeroSAPtr(ArrPtr(v()))
+  Call MArray.ZeroSAPtr(ArrPtr(A()))
+  Call MArray.ZeroSAPtr(ArrPtr(u()))
+  Call MArray.ZeroSAPtr(ArrPtr(v()))
 End Sub
 ''' <summary>Returns the condition number <c>max(S) / min(S)</c>.</summary>
 'Public ReadOnly Property Condition() As Double

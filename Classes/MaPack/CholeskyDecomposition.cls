@@ -136,7 +136,7 @@ Public Function Solve(ByVal Value As Matrix) As Matrix
       Next
     Next
   Next
-  Call ZeroSAPtr(ArrPtr(ll()))
+  Call MArray.ZeroSAPtr(ArrPtr(ll()))
   'Return B
   Set Solve = B
 End Function

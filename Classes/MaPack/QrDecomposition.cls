@@ -60,7 +60,7 @@ Friend Sub New_(ByVal Value As Matrix)
     End If
     mRdiag(k) = -nrm
   Next
-  Call ZeroSAPtr(ArrPtr(qr()))
+  Call MArray.ZeroSAPtr(ArrPtr(qr()))
 End Sub
 ''' <summary>Least squares solution of <c>A * X = B</c></summary>
 ''' <param name="value">Right-hand-side matrix with as many rows as <c>A</c> and any number of columns.</param>
@@ -111,8 +111,8 @@ Public Function Solve(ByVal Value As Matrix) As Matrix
       Next
     Next
   Next
-  Call ZeroSAPtr(ArrPtr(xx()))
-  Call ZeroSAPtr(ArrPtr(qr()))
+  Call MArray.ZeroSAPtr(ArrPtr(xx()))
+  Call MArray.ZeroSAPtr(ArrPtr(qr()))
   Set Solve = X.Submatrix(0, n - 1, 0, count - 1)
   'Return X.Submatrix(0, n - 1, 0, count - 1)
 End Function
@@ -153,8 +153,8 @@ Public Property Get UpperTriangularFactor() As Matrix
         End If
       Next
     Next
-    Call ZeroSAPtr(ArrPtr(xx()))
-    Call ZeroSAPtr(ArrPtr(qr()))
+    Call MArray.ZeroSAPtr(ArrPtr(xx()))
+    Call MArray.ZeroSAPtr(ArrPtr(qr()))
     'Return X
     Set UpperTriangularFactor = X
   'End Get
@@ -187,8 +187,8 @@ Public Property Get OrthogonalFactor() As Matrix
       Next
     Next
     'Return X
-    Call ZeroSAPtr(ArrPtr(xx()))
-    Call ZeroSAPtr(ArrPtr(qr()))
+    Call MArray.ZeroSAPtr(ArrPtr(xx()))
+    Call MArray.ZeroSAPtr(ArrPtr(qr()))
     Set OrthogonalFactor = X
   'End Get
 End Property

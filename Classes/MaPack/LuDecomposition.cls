@@ -98,7 +98,7 @@ Friend Sub New_(Value As Matrix)
     End If
   Next
   Call CopyColPtr(ArrPtr(LUcolj()), pvDataOld, 1)
-  Call ZeroSAPtr(ArrPtr(lu()))
+  Call MArray.ZeroSAPtr(ArrPtr(lu()))
 End Sub
 ''' <summary>Returns if the matrix is non-singular.</summary>
 'Public ReadOnly Property NonSingular() As Boolean
@@ -235,8 +235,8 @@ Public Function Solve(ByVal Value As Matrix) As Matrix
       Next
     Next
   Next
-  Call ZeroSAPtr(ArrPtr(lu()))
-  Call ZeroSAPtr(ArrPtr(xx()))
+  Call MArray.ZeroSAPtr(ArrPtr(lu()))
+  Call MArray.ZeroSAPtr(ArrPtr(xx()))
   'Return X
   Set Solve = X
 End Function

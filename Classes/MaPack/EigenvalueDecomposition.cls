@@ -791,7 +791,7 @@ Public Property Get DiagonalMatrix() As Matrix
         xx(i, i - 1) = e(i)
       End If
     Next
-    Call ZeroSAPtr(ArrPtr(xx()))
+    Call MArray.ZeroSAPtr(ArrPtr(xx()))
     Set DiagonalMatrix = X
   'End Get
 End Property
