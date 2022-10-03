@@ -88,13 +88,13 @@ Public Sub Main() 'ByVal args As String())
   Next
   Call Console.WriteLine("")
   Call Console.WriteLine("V = ")
-  Call Console.WriteLine(eigen.EigenvectorMatrix)
+  Call Console.WriteLine(eigen.EigenvectorMatrix.ToString())
   Call Console.WriteLine("V * D * V' = ")
-  Call Console.WriteLine(Matrix.op_MulM(eigen.EigenvectorMatrix, Matrix.op_MulM(eigen.DiagonalMatrix, eigen.EigenvectorMatrix.Transpose)))
+  Call Console.WriteLine(Matrix.op_MulM(eigen.EigenvectorMatrix, Matrix.op_MulM(eigen.DiagonalMatrix, eigen.EigenvectorMatrix.Transpose)).ToString())
   Call Console.WriteLine("A * V = ")
-  Call Console.WriteLine(Matrix.op_MulM(A, eigen.EigenvectorMatrix))
+  Call Console.WriteLine(Matrix.op_MulM(A, eigen.EigenvectorMatrix).ToString())
   Call Console.WriteLine("V * D = ")
-  Call Console.WriteLine(Matrix.op_MulM(eigen.EigenvectorMatrix, eigen.DiagonalMatrix))
+  Call Console.WriteLine(Matrix.op_MulM(eigen.EigenvectorMatrix, eigen.DiagonalMatrix).ToString())
   Call Console.WriteLine("Exit? j/n")
   'einen Userbreak einbauen:
   Dim s As String

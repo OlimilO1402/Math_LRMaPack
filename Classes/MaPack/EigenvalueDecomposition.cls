@@ -26,47 +26,48 @@ Private ort() As Double
 ' storage for nonsymmetric algorithm.
 Private cdivr As Double, cdivi As Double
 Private mSymmetric As Boolean
+
 ''' <summary>Construct an eigenvalue decomposition.</summary>
 Friend Sub New_(Value As Matrix)
-  If Value Is Nothing Then
-    'Throw New ArgumentNullException("value")
-    MsgBox "EigenvalueDecomposition::NewC ArgumentNull: " & "value"
-  End If
-  If Value.Rows <> Value.Columns Then
-    'Throw New ArgumentException("Matrix is not a square matrix.", "value")
-    MsgBox "EigenvalueDecomposition::NewC Matrix value is not a square matrix."
-  End If
-  mN = Value.Columns
-  Set mV = MNew.Matrix(mN, mN)
-  ReDim d(0 To mN - 1) 'd = New_Double(n - 1) '{}
-  ReDim e(0 To mN - 1) 'e = New_Double(n - 1) '{}
-  ' Check for symmetry.
-  Dim i As Long, j As Long
-  mSymmetric = Value.Symmetric
-  If mSymmetric Then
-    'versteh ich nicht, also doch einfach clonen
-    For i = 0 To mN - 1
-      For j = 0 To mN - 1
-        mV(i, j) = Value(i, j)
-      Next
-    Next
-    ' Tridiagonalize.
-    Call tred2
-    ' Diagonalize.
-    Call tql2
-  Else
-    Set mH = MNew.Matrix(mN, mN)
-    ReDim ort(0 To mN - 1) 'ort() = New_Double(n - 1) ' {}
-    For j = 0 To mN - 1
-      For i = 0 To mN - 1
-        mH(i, j) = Value(i, j)
-      Next
-    Next
-    ' Reduce to Hessenberg form.
-    Call orthes
-    ' Reduce Hessenberg to real Schur form.
-    Call hqr2
-  End If
+    If Value Is Nothing Then
+        'Throw New ArgumentNullException("value")
+        MsgBox "EigenvalueDecomposition::NewC ArgumentNull: " & "value"
+    End If
+    If Value.Rows <> Value.Columns Then
+        'Throw New ArgumentException("Matrix is not a square matrix.", "value")
+        MsgBox "EigenvalueDecomposition::NewC Matrix value is not a square matrix."
+    End If
+    mN = Value.Columns
+    Set mV = MNew.Matrix(mN, mN)
+    ReDim d(0 To mN - 1) 'd = New_Double(n - 1) '{}
+    ReDim e(0 To mN - 1) 'e = New_Double(n - 1) '{}
+    ' Check for symmetry.
+    Dim i As Long, j As Long
+    mSymmetric = Value.Symmetric
+    If mSymmetric Then
+        'versteh ich nicht, also doch einfach clonen
+        For i = 0 To mN - 1
+            For j = 0 To mN - 1
+                mV(i, j) = Value(i, j)
+            Next
+        Next
+        ' Tridiagonalize.
+        Call tred2
+        ' Diagonalize.
+        Call tql2
+    Else
+        Set mH = MNew.Matrix(mN, mN)
+        ReDim ort(0 To mN - 1) 'ort() = New_Double(n - 1) ' {}
+        For j = 0 To mN - 1
+            For i = 0 To mN - 1
+                mH(i, j) = Value(i, j)
+            Next
+        Next
+        ' Reduce to Hessenberg form.
+        Call orthes
+        ' Reduce Hessenberg to real Schur form.
+        Call hqr2
+    End If
 End Sub
 Private Sub tred2()
 'Siehe auch Numerical Recipes Kap 11.2 "Reduction of a Symmetric Matrix to Tridiagonal Form"
